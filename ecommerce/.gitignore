@@ -5,6 +5,10 @@ node_modules
 /.pnp
 .pnp.js
 
+# sanityio
+/sanity_ecommerce/config
+/sanity_ecommerce/static
+
 # testing
 /coverage
 
