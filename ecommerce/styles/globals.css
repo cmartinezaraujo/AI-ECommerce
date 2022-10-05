@@ -269,6 +269,24 @@ body, * {
  color: #324d67;
 }
 
+.small-images__container{
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.small-image{
+  border-radius: 8px;
+  background-color: #ebebeb;
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+}
+
+.selected-image{
+  background-color:#f02d34;
+}
+
 .product__detail-image{
   border-radius: 15px;
    background-color: #ebebeb;
@@ -381,6 +399,48 @@ padding: 6px;
 }
 .buttons .buy-now:hover{
   transform:scale(1.1,1.1)
+}
+
+.maylike-products__wrapper{
+  margin-top: 120px;
+}
+.maylike-products__wrapper h2{
+  text-align: center;
+  margin: 50px;
+  color: #324d67;
+
+  font-size: 28px;
+}
+
+.marquee {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.track {
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 15s linear infinite;
+  width: 180%;
+}
+
+.track:hover {
+  animation-play-state: paused;
+}
+
+.maylike-products__container{
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 
