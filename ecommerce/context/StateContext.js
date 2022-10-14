@@ -18,6 +18,22 @@ export const StateContext = ({children}) => {
     const [totalPrice, setTotalPrice] = useState(0);
     const [totalQuantities, setTotalQuantities] = useState(0);
     const [quantity, setQuantity] = useState(1);
+      
+
+    useEffect(() => {
+        const localStorageCart = JSON.parse(localStorage.getItem('cart') || "[]");
+        setcartItems(localStorageCart);
+        const localStorageTotalPrice = JSON.parse(localStorage.getItem('totalPrice') || 0); 
+        setTotalPrice(localStorageTotalPrice);
+        const localStorageTotalQuantities = JSON.parse(localStorage.getItem('totalQuantities') || 0);
+        setTotalQuantities(localStorageTotalQuantities);
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+        localStorage.setItem('totalPrice', JSON.stringify(totalPrice));
+        localStorage.setItem('totalQuantities', JSON.stringify(totalQuantities));
+    }, [cartItems, totalPrice, totalQuantities]);
 
     let foundProduct;
     let index;
@@ -77,6 +93,7 @@ export const StateContext = ({children}) => {
                 setTotalQuantities((prevTotalQuantities) => prevTotalQuantities-1);
             }
         }
+        console.log("total price: ", totalPrice);
     }
 
     const increaseQuantity = () => {
