@@ -93,7 +93,6 @@ export const StateContext = ({children}) => {
                 setTotalQuantities((prevTotalQuantities) => prevTotalQuantities-1);
             }
         }
-        console.log("total price: ", totalPrice);
     }
 
     const increaseQuantity = () => {
