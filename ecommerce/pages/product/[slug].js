@@ -10,7 +10,12 @@ const ProductDetails = ({product, products}) => {
     const {image, name, details, price} = product;
     const [index, setIndex] = useState(0);
 
-    const {increaseQuantity, decreaseQuantity, quantity, onAdd} = useStateContext();
+    const {increaseQuantity, decreaseQuantity, quantity, onAdd, setShowCart} = useStateContext();
+
+    const handleBuyNow = () => {
+      onAdd(product, quantity);
+      setShowCart(true);
+    }
 
   return (
     <div>
@@ -22,6 +27,7 @@ const ProductDetails = ({product, products}) => {
         <div className="small-images__container">
             {image?.map((img, i) => (
                 <img
+                    key={i}
                     src={urlFor(img)}
                     className={i === index ? 
                         `small-image selected-image` : 
@@ -59,7 +65,7 @@ const ProductDetails = ({product, products}) => {
         </div>
         <div className="buttons">
           <button type="button" className="add-to-cart" onClick={() => onAdd(product, quantity)}>Add to Cart</button>
-          <button type="button" className="buy-now" onClick="">Buy Now</button>
+          <button type="button" className="buy-now" onClick={() => handleBuyNow()}>Buy Now</button>
         </div>
       </div>
     </div>
